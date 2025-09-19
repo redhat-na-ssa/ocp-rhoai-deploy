@@ -29,13 +29,30 @@ download_oc-mirror(){
 download_oc-mirror
 ```
 
+```sh
+ocp_mirror_setup_pull_secret(){
+  export DOCKER_CONFIG="scratch"
+
+  [ -e "${DOCKER_CONFIG}/config.json" ] && return
+
+  oc -n openshift-config \
+    extract secret/pull-secret \
+    --to=- | tee "scratch/pull-secret" > "${DOCKER_CONFIG}/config.json"
+
+  # cat scratch/pull-secret | jq .
+}
+
+ocp_mirror_setup_pull_secret
+```
+
+
 Create `isc.yaml` - edit the copy for your needs
 
 ```sh
 [ -d scratch ] || mkdir scratch
-cp dump/isc.yaml scratch/
+cp dump/isc*.yaml scratch/
 
-# vim scratch/isc.yaml
+# edit scratch/isc.yaml
 ```
 
 Create `mapping.txt`
@@ -44,11 +61,12 @@ Create `mapping.txt`
 REGISTRY=registry:5000
 
 oc-mirror \
-  -c scratch/isc.yaml \
+  -c scratch/isc-combo.yaml \
   --workspace file:///${PWD}/scratch/oc-mirror \
   docker://"${REGISTRY}" \
   --v2 \
-  --dry-run
+  --dry-run \
+  --authfile scratch/pull-secret
 ```
 
 Create `images.txt` - a list of images to copy
