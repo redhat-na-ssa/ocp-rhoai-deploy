@@ -5,7 +5,7 @@ Notes for offline OCP + RHOAI install
 `oc-mirror` config for:
 
 - [OpenShift 4.18](configs/isc-ocp-4.18.yaml)
-- [OpenShift AI 2.22](configs/isc-ocp.yaml)
+- [OpenShift AI 2.22](configs/isc-rhoai.yaml)
 
 List of images to mirror for:
 
