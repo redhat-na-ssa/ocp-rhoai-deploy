@@ -14,6 +14,7 @@ mirror:
         - name: web-terminal
         - name: devworkspace-operator-fast-redhat-operators-openshift-marketplace
         - name: rhods-operator
+          defaultChannel: stable-2.22
           channels:
           - name: stable-2.22
             minVersion: 2.22.1

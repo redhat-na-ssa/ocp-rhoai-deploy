@@ -45,7 +45,6 @@ ocp_mirror_setup_pull_secret(){
 ocp_mirror_setup_pull_secret
 ```
 
-
 Create `isc.yaml` - edit the copy for your needs
 
 ```sh

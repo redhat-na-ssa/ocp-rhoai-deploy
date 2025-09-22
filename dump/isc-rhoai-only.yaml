@@ -1,14 +1,11 @@
 kind: ImageSetConfiguration
 apiVersion: mirror.openshift.io/v2alpha1
-storageConfig:
-  registry: 
-    imageURL: registry:5000/mirror/oc-mirror-metadata
-    skipTLS: true
 mirror:
   operators:
     - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.18
       packages:
         - name: rhods-operator
+          defaultChannel: stable-2.22
           channels:
           - name: stable-2.22
             minVersion: 2.22.1
