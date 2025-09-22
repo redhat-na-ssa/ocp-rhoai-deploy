@@ -1,0 +1,26 @@
+# custom excludes
+data/
+scratch/
+files.txt
+dictionary.dic
+*.log
+
+# swap files
+*~
+.*~
+*.swp
+.*.swp
+*.swo
+tmp
+
+# cache
+.cache
+
+# bfg - because we never commit large data or passwords to git
+..bfg-report/
+
+# Environments
+.env
+.venv
+env/
+venv/
