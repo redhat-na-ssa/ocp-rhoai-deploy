@@ -6,7 +6,12 @@ install_quay(){
   ssh highside /mnt/high-side-data/mirror-registry install --initPassword discopass
 }
 
-. scripts/bootstrap.sh
+. scripts/functions.sh
+
+bin_check oc
+bin_check oc-mirror
+bin_check openshift-install
+bin_check mirror-registry
 
 # adhoc for disconnected setup
 
