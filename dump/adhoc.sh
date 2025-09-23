@@ -30,4 +30,6 @@ oc-mirror \
   -c scratch/isc-combo.yaml \
   --workspace file:///${PWD}/scratch/oc-mirror \
   docker://"${REGISTRY}" \
-  --v2
+  --v2 \
+  $XDG_RUNTIME_DIR/containers/auth.json
+
