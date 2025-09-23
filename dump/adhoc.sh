@@ -1,5 +1,4 @@
 #!/bin/sh
-set -x
 
 install_quay(){
   ssh highside [ -e $HOME/quay-install ] && return 0
