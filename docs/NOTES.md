@@ -15,7 +15,8 @@ The following can create a `mapping.txt` file that can be used with `skopeo` to 
 Download `oc-mirror`
 
 ```sh
-OPENSHIFT_CLIENTS_URL=https://mirror.openshift.com/pub/openshift-v4/x86_64/clients
+OPENSHIFT_MIRROR_URL=https://mirror.openshift.com/pub
+OPENSHIFT_CLIENTS_URL=${OPENSHIFT_MIRROR_URL}/openshift-v4/x86_64/clients
 BIN_PATH=${BIN_PATH:-scratch/bin}
 [ -d "${BIN_PATH}" ] || mkdir -p "${BIN_PATH}"
 
@@ -26,7 +27,15 @@ download_oc-mirror(){
   chmod +x "${BIN_PATH}/oc-mirror"
 }
 
+download_mirror-registry(){
+  BIN_VERSION=latest
+  DOWNLOAD_URL=${OPENSHIFT_MIRROR_URL}/cgw/mirror-registry/${BIN_VERSION}/mirror-registry-amd64.tar.gz
+  curl "${DOWNLOAD_URL}" -sL | tar zx -C "${BIN_PATH}/"
+  chmod +x "${BIN_PATH}/mirror-registry"
+}
+
 download_oc-mirror
+download_mirror_registry
 ```
 
 ```sh
@@ -78,4 +87,44 @@ sed '
   /localhost/d' \
     scratch/oc-mirror/working-dir/dry-run/mapping.txt \
     > scratch/images-"${DATE}".txt
+```
+
+## Mirror for disconnected
+
+Mirror to Disk
+
+```sh
+# OCP 4.18
+oc-mirror \
+  -c scratch/isc-ocp-4.18.yaml \
+  file:///${PWD}/scratch/ocp --v2
+```
+
+```sh
+# RHOAI 2.22
+oc-mirror \
+  -c scratch/isc-rhoai-2.22.yaml \
+  file:///${PWD}/scratch/rhoai --v2
+```
+
+Disk to Mirror
+
+```sh
+export REGISTRY=registry:5000
+
+# OCP 4.18
+oc-mirror \
+  -c scratch/isc-ocp-4.18.yaml \
+  --from file:///${PWD}/scratch/ocp \
+  docker://"${REGISTRY}" --v2
+```
+
+```sh
+export REGISTRY=registry:5000
+
+# RHOAI 2.22
+oc-mirror \
+  -c scratch/isc-rhoai-2.22.yaml \
+  --from file:///${PWD}/scratch/rhoai \
+  docker://"${REGISTRY}" --v2
 ```
