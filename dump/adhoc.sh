@@ -1,19 +1,15 @@
 #!/bin/sh
 
+scripts/bootstrap.sh
+
+# adhoc for disconnected setup
+
 install_quay(){
   ssh highside [ -e $HOME/quay-install ] && return 0
   ssh highside /mnt/high-side-data/mirror-registry install --initPassword discopass
 }
 
-bin_check oc
-bin_check oc-mirror
-bin_check openshift-install
-bin_check mirror-registry
-
-# adhoc for disconnected setup
-
 cp -n configs/* scratch/
-
 
 sudo cp scratch/bin/{oc*,kube*} /usr/local/bin/
 sudo chmod +x /usr/local/bin/*
@@ -39,5 +35,5 @@ oc-mirror \
   --workspace file:///${PWD}/scratch/oc-mirror \
   docker://"${REGISTRY}" \
   --v2 \
-  $XDG_RUNTIME_DIR/containers/auth.json
+  --authfile $XDG_RUNTIME_DIR/containers/auth.json
 
