@@ -47,6 +47,7 @@ bin_check(){
       ${name} version 2>&1
       ;;
     kubectl-operator)
+      echo ""
       ;;
     restic)
       restic generate --bash-completion "${BASH_COMP}/${name}.sh"
