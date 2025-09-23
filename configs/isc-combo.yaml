@@ -12,7 +12,8 @@ mirror:
     - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.18
       packages:
         - name: cincinnati-operator
-        - name: devworkspace-operator-fast-redhat-operators-openshift-marketplace
+        # - name: devworkspace-operator-fast-redhat-operators-openshift-marketplace
+        - name: devworkspace-operator
         - name: web-terminal
         - name: rhods-operator
           defaultChannel: stable-2.22
