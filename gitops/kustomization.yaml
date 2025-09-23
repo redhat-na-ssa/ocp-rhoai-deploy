@@ -4,9 +4,4 @@ kind: Kustomization
 resources:
   - operators/cincinnati-operator/operator/overlays/v1
   - operators/rhods-operator/instance/overlays/all
-
-patches:
-  - target:
-      kind: Subscription
-      name: rhods-operator
-    path: patch-channel.yaml
+  - operators/web-terminal
