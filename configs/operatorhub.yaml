@@ -3,12 +3,13 @@ kind: OperatorHub
 metadata:
   name: cluster
 spec:
-  sources:
-  - disabled: true
-    name: certified-operators
-  - disabled: true
-    name: community-operators
-  - disabled: true
-    name: redhat-marketplace
-  - disabled: true
-    name: redhat-operators
+  disableAllDefaultSources: true
+  # sources:
+  # - disabled: true
+  #   name: certified-operators
+  # - disabled: true
+  #   name: community-operators
+  # - disabled: true
+  #   name: redhat-marketplace
+  # - disabled: true
+  #   name: redhat-operators
