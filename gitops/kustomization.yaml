@@ -1,7 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+components:
+  - operators/web-terminal
+
+
 resources:
   - operators/cincinnati-operator/operator/overlays/v1
   - operators/rhods-operator/instance/overlays/all
-  - operators/web-terminal
