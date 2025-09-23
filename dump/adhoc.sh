@@ -25,6 +25,7 @@ scp highside:$HOME/quay-install/quay-rootCA/rootCA.pem /tmp/
 sudo cp /tmp/rootCA.pem /etc/pki/ca-trust/source/anchors/
 sudo update-ca-trust
 
+[ -d $XDG_RUNTIME_DIR/containers ] || mkdir -p $XDG_RUNTIME_DIR/containers
 cp $HOME/pull-secret-example.json $XDG_RUNTIME_DIR/containers/auth.json
 REGISTRY=$(ssh highside hostname):8443
 
