@@ -5,6 +5,8 @@ install_quay(){
   ssh highside /mnt/high-side-data/mirror-registry install --initPassword discopass
 }
 
+. scripts/bootstrap.sh
+
 # adhoc for disconnected setup
 
 cp -n configs/* scratch/
