@@ -17,7 +17,7 @@ install_quay
 ssh highside sudo cp -v $HOME/quay-install/quay-rootCA/rootCA.pem /etc/pki/ca-trust/source/anchors/
 ssh highside sudo update-ca-trust
 
-scp highside $HOME/quay-install/quay-rootCA/rootCA.pem /tmp/
+scp highside:$HOME/quay-install/quay-rootCA/rootCA.pem /tmp/
 sudo cp /tmp/rootCA.pem /etc/pki/ca-trust/source/anchors/
 sudo update-ca-trust
 
