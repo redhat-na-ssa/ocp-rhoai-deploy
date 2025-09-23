@@ -7,6 +7,9 @@ install_quay(){
 
 # adhoc for disconnected setup
 
+cp -n configs/* scratch/
+
+
 sudo cp scratch/bin/{oc*,kube*} /usr/local/bin/
 sudo chmod +x /usr/local/bin/*
 
