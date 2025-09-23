@@ -22,6 +22,7 @@ mirror:
             maxVersion: 2.22.1
   additionalImages:
     - name: ghcr.io/redhat-na-ssa/web-terminal-tooling:latest
+    - name: registry.redhat.io/openshift4/ose-cli:latest
     # https://github.com/red-hat-data-services/rhoai-disconnected-install-helper/blob/main/rhoai-2.22.1.md
     - name: quay.io/modh/caikit-nlp@sha256:c867652a543eacd8288d08e9d38d8d25468c04fb838eebf450906293890b040d
     - name: quay.io/modh/caikit-tgis-serving@sha256:d8294f446afefc6cbba0df882bba12cdad142f79b29bda46227a6328128d7fb6

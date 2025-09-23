@@ -16,4 +16,4 @@ mirror:
         - name: web-terminal
   additionalImages:
     - name: ghcr.io/redhat-na-ssa/web-terminal-tooling:latest
-
+    - name: registry.redhat.io/openshift4/ose-cli:latest
