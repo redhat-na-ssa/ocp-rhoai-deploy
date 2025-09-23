@@ -35,5 +35,6 @@ oc-mirror \
   --workspace file:///${PWD}/scratch/oc-mirror \
   docker://"${REGISTRY}" \
   --v2 \
+  --image-timeout 60m \
   --authfile $XDG_RUNTIME_DIR/containers/auth.json
 
