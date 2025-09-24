@@ -1,5 +1,9 @@
 # Notes for offline RHOAI install
 
+## Links
+
+- [oc-mirror alternatives](https://developers.redhat.com/articles/2024/07/23/how-get-red-hat-openshift-operators-information-without-oc-mirror-plug)
+
 Other operator dependencies:
 
 - NFD
