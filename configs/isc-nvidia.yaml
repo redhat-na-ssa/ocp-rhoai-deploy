@@ -9,8 +9,8 @@ mirror:
     #   packages:
     #     - name: nfd
     - catalog: registry.redhat.io/redhat/certified-operator-index:v4.18
-      targetCatalog: vendor/certified-operator-index
-      targetTag: v4.18
+      # targetCatalog: vendor/certified-operator-index
+      # targetTag: v4.18
       packages:
         - name: gpu-operator-certified
           defaultChannel: v25.3 
