@@ -11,7 +11,7 @@ mirror:
   operators:
     - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.18
       targetCatalog: docker://localhost/vendor/redhat-operator-index
-      targetTag: v4.18
+      # targetTag: v4.18
       packages:
         - name: nfd
     # - catalog: registry.redhat.io/redhat/certified-operator-index:v4.18
