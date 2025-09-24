@@ -13,7 +13,6 @@ mirror:
       packages:
         - name: cincinnati-operator
         - name: devworkspace-operator
-        - name: nfd
         - name: web-terminal
   additionalImages:
     - name: ghcr.io/redhat-na-ssa/web-terminal-tooling:latest
