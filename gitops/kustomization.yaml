@@ -4,7 +4,29 @@ kind: Kustomization
 components:
   - operators/web-terminal
 
-
 resources:
   - operators/cincinnati-operator/operator/overlays/v1
   - operators/rhods-operator/instance/overlays/all
+
+patches:
+  - target:
+      kind: Subscription
+      name: web-terminal
+    patch: |-
+      - op: replace
+        path: /spec/source
+        value: cs-redhat-operator-index-v4-18
+  - target:
+      kind: Subscription
+      name: rhods-operator
+    patch: |-
+      - op: replace
+        path: /spec/source
+        value: cs-rhoai-redhat-operator-index-v4-18
+  - target:
+      kind: Subscription
+      name: servicemeshoperator
+    patch: |-
+      - op: replace
+        path: /spec/source
+        value: cs-rhoai-redhat-operator-index-v4-18
