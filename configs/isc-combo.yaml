@@ -17,6 +17,16 @@ mirror:
         - name: devworkspace-operator
         - name: nfd
         - name: web-terminal
+    - catalog: registry.redhat.io/redhat/certified-operator-index:v4.18
+      targetCatalog: vendor/certified-operator-index
+      targetTag: v4.18
+      packages:
+        - name: gpu-operator-certified
+          defaultChannel: v25.3
+          channels:
+          - name: v25.3
+            minVersion: 25.3.4
+            maxVersion: 25.3.4
     - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.18
       targetCatalog: rhoai/redhat-operator-index 
       targetTag: v4.18
