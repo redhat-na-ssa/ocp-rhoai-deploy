@@ -14,6 +14,10 @@ mirror:
         - name: cincinnati-operator
         - name: devworkspace-operator
         - name: web-terminal
+    - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.18
+      targetCatalog: rhoai/redhat-operator-index 
+      targetTag: v4.18
+      packages:
         - name: servicemeshoperator
           defaultChannel: stable
           channels:
