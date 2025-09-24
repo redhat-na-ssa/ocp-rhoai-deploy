@@ -9,7 +9,7 @@ components:
 resources:
   # - operators/cincinnati-operator/operator/overlays/v1
   - operators/rhods-operator/instance/overlays/all
-
+  - operators/rhods-operator/operator/overlays/stable-2.22
 
 patches:
   - target:
