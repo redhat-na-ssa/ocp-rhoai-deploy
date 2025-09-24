@@ -32,7 +32,7 @@ REGISTRY=$(ssh highside hostname):8443
 podman login -u init -p discopass ${REGISTRY}
 
 oc-mirror \
-  -c scratch/isc-combo.yaml \
+  -c scratch/isc-ocp-4.18.yaml \
   --workspace file:///${PWD}/scratch/oc-mirror \
   docker://"${REGISTRY}" \
   --v2 \
