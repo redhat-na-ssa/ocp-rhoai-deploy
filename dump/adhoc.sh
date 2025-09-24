@@ -32,25 +32,12 @@ REGISTRY=$(ssh highside hostname):8443
 podman login -u init -p discopass ${REGISTRY}
 
 oc-mirror \
-  -c scratch/isc-ocp-4.18.yaml \
+  -c scratch/isc-combo.yaml \
   --workspace file:///${PWD}/scratch/oc-mirror \
   docker://"${REGISTRY}" \
   --v2 \
   --image-timeout 60m \
   --authfile $XDG_RUNTIME_DIR/containers/auth.json
 
-oc-mirror \
-  -c scratch/isc-nvidia.yaml \
-  --workspace file:///${PWD}/scratch/oc-mirror \
-  docker://"${REGISTRY}" \
-  --v2 \
-  --image-timeout 60m \
-  --authfile $XDG_RUNTIME_DIR/containers/auth.json
-
-oc-mirror \
-  -c scratch/isc-rhoai-2.22.yaml \
-  --workspace file:///${PWD}/scratch/oc-mirror \
-  docker://"${REGISTRY}" \
-  --v2 \
-  --image-timeout 60m \
-  --authfile $XDG_RUNTIME_DIR/containers/auth.json
+oc apply -f scratch/{cc*,cs*}.yaml
+oc apply -f scratch/operatorhub.yaml
