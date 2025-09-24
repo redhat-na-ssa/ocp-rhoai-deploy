@@ -7,6 +7,8 @@ components:
 resources:
   # - operators/cincinnati-operator/operator/overlays/v1
   - operators/rhods-operator/instance/overlays/all
+  - operators/serverless-operator
+  - operators/servicemeshoperator
 
 patches:
   - target:
