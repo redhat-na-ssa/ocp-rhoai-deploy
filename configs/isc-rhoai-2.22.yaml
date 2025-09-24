@@ -4,6 +4,12 @@ mirror:
   operators:
     - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.18
       packages:
+        - name: servicemeshoperator
+          defaultChannel: stable
+          channels:
+          - name: stable
+            minVersion: 2.6.10-0
+            maxVersion: 2.6.10-0
         - name: rhods-operator
           defaultChannel: stable-2.22
           channels:

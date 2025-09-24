@@ -14,6 +14,12 @@ mirror:
         - name: cincinnati-operator
         - name: devworkspace-operator
         - name: web-terminal
+        - name: servicemeshoperator
+          defaultChannel: stable
+          channels:
+          - name: stable
+            minVersion: 2.6.10-0
+            maxVersion: 2.6.10-0
         - name: rhods-operator
           defaultChannel: stable-2.22
           channels:
