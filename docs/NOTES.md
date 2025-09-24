@@ -1,5 +1,11 @@
 # Notes for offline RHOAI install
 
+Other operator dependencies:
+
+- NFD
+- nvidia
+- servicemesh 2
+
 ## RHOAI Offline Install
 
 - [RHOAI Install - Mirroring Images](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/2.23/html/installing_and_uninstalling_openshift_ai_self-managed_in_a_disconnected_environment/deploying-openshift-ai-in-a-disconnected-environment_install#mirroring-images-to-a-private-registry-for-a-disconnected-installation_install)
