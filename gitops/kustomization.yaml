@@ -5,7 +5,7 @@ components:
   - operators/web-terminal
 
 resources:
-  - operators/cincinnati-operator/operator/overlays/v1
+  # - operators/cincinnati-operator/operator/overlays/v1
   - operators/rhods-operator/instance/overlays/all
 
 patches:

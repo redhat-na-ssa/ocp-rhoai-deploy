@@ -6,6 +6,12 @@ mirror:
       targetCatalog: rhoai/redhat-operator-index
       targetTag: v4.18
       packages:
+        - name: serverless-operator
+          defaultChannel: stable
+          channels:
+          - name: stable
+            minVersion: 1.36.1
+            maxVersion: 1.36.1
         - name: servicemeshoperator
           defaultChannel: stable
           channels:
