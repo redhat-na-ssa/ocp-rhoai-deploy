@@ -41,5 +41,5 @@ oc-mirror \
 
 oc apply -f scratch/oc-mirror/working-dir/cluster-resources
 
-oc apply -f scratch/{cc*,cs*}.yaml
+oc apply -f configs/catalogs
 oc apply -f scratch/operatorhub.yaml
