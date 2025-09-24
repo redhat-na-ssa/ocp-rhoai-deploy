@@ -8,7 +8,7 @@ mirror:
       targetTag: v4.18
       packages:
         - name: nfd
-          defaultChannel: v25.3 
+          defaultChannel: v25.3
           channels:
           - name: 25.3.4
             minVersion: 25.3.4
