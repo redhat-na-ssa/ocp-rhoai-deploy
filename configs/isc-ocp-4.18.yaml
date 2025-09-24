@@ -11,8 +11,9 @@ mirror:
   operators:
     - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.18
       packages:
+        - name: cincinnati-operator
+        - name: devworkspace-operator
         - name: web-terminal
-        - name: devworkspace-operator-fast-redhat-operators-openshift-marketplace
   additionalImages:
     - name: ghcr.io/redhat-na-ssa/web-terminal-tooling:latest
-
+    - name: registry.redhat.io/openshift4/ose-cli:latest

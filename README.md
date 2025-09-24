@@ -1,6 +1,16 @@
 # OpenShift Offline RHOAI install
 
-Notes for offline OCP + RHOAI install
+## Prereqs
+
+Red Hat Demo System
+
+[OpenShift Disconnected Workshop](https://catalog.demo.redhat.com/catalog?item=babylon-catalog-prod/sandboxes-gpte.ocp4-disconnected.prod&utm_source=webapp&utm_medium=share-link)
+
+## Notes for offline OCP + RHOAI install
+
+See [NOTES](docs/NOTES.md)
+
+## General Info
 
 `oc-mirror` config for:
 

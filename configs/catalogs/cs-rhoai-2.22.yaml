@@ -1,0 +1,9 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  annotations:
+  name: cs-rhoai-redhat-operator-index-v4-18
+  namespace: openshift-marketplace
+spec:
+  image: ip-10-0-53-73.us-east-2.compute.internal:8443/rhoai/redhat-operator-index:v4.18
+  sourceType: grpc

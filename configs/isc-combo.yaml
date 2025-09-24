@@ -10,9 +10,39 @@ mirror:
     graph: true
   operators:
     - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.18
+      targetCatalog: redhat/redhat-operator-index 
+      targetTag: v4.18
       packages:
+        - name: cincinnati-operator
+        - name: devworkspace-operator
+        - name: nfd
         - name: web-terminal
-        - name: devworkspace-operator-fast-redhat-operators-openshift-marketplace
+    - catalog: registry.redhat.io/redhat/certified-operator-index:v4.18
+      targetCatalog: vendor/certified-operator-index
+      targetTag: v4.18
+      packages:
+        - name: gpu-operator-certified
+          defaultChannel: v25.3
+          channels:
+          - name: v25.3
+            minVersion: 25.3.4
+            maxVersion: 25.3.4
+    - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.18
+      targetCatalog: rhoai/redhat-operator-index 
+      targetTag: v4.18
+      packages:
+        - name: serverless-operator
+          defaultChannel: stable
+          channels:
+          - name: stable
+            minVersion: 1.36.1
+            maxVersion: 1.36.1
+        - name: servicemeshoperator
+          defaultChannel: stable
+          channels:
+          - name: stable
+            minVersion: 2.6.10-0
+            maxVersion: 2.6.10-0
         - name: rhods-operator
           defaultChannel: stable-2.22
           channels:
@@ -21,6 +51,7 @@ mirror:
             maxVersion: 2.22.1
   additionalImages:
     - name: ghcr.io/redhat-na-ssa/web-terminal-tooling:latest
+    - name: registry.redhat.io/openshift4/ose-cli:latest
     # https://github.com/red-hat-data-services/rhoai-disconnected-install-helper/blob/main/rhoai-2.22.1.md
     - name: quay.io/modh/caikit-nlp@sha256:c867652a543eacd8288d08e9d38d8d25468c04fb838eebf450906293890b040d
     - name: quay.io/modh/caikit-tgis-serving@sha256:d8294f446afefc6cbba0df882bba12cdad142f79b29bda46227a6328128d7fb6
@@ -78,7 +109,7 @@ mirror:
     - name: quay.io/modh/training@sha256:1d0caea3e5d56ff7d672954b1ad511e661df9bdb364d56879961169a4ca8dae0
     - name: quay.io/modh/training@sha256:883739b576b485d79966d8c894fdd9ebebd226605a2abe8b33593ca67c87a394
     - name: quay.io/modh/training@sha256:6cdae840fa029da33cccab620367e82404d24ddf67762eb4537a9bffe1af306d
-    - name: registry.redhat.io/rhelai1/instructlab-nvidia-rhel9@sha256:b3dc9af0244aa6b84e6c3ef53e714a316daaefaae67e28de397cd71ee4b2ac7e
+    # - name: registry.redhat.io/rhelai1/instructlab-nvidia-rhel9@sha256:b3dc9af0244aa6b84e6c3ef53e714a316daaefaae67e28de397cd71ee4b2ac7e
     - name: quay.io/opendatahub/llama-stack-k8s-operator@sha256:f8f66ec02e7f59e510cb20eebfe0c1f6d41b62a9276c6e8e703d258f93d49119
     - name: quay.io/modh/must-gather@sha256:3b63f056d719ecc1ddd980c99272ade594440af03836bc780f8f394a56010d43
     - name: quay.io/modh/codeserver@sha256:1fd51b0e8a14995f1f7273a4b0b40f6e7e27e225ab179959747846e54079d61e

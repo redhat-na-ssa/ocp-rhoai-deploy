@@ -1,5 +1,4 @@
 #!/bin/bash
-# shellcheck disable=SC2035
 
 OPENSHIFT_MIRROR_URL=https://mirror.openshift.com/pub
 OPENSHIFT_CLIENTS_URL=${OPENSHIFT_MIRROR_URL}/openshift-v4/x86_64/clients
