@@ -13,6 +13,7 @@ mirror:
       packages:
         - name: cincinnati-operator
         - name: devworkspace-operator
+        - name: nfd
         - name: web-terminal
     - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.18
       targetCatalog: rhoai/redhat-operator-index 
