@@ -21,7 +21,7 @@ patches:
         value: cs-redhat-operator-index-v4-18
   - target:
       kind: Subscription
-      name: rhods-operator
+      name: serverless-operator
     patch: |-
       - op: replace
         path: /spec/source
@@ -29,6 +29,13 @@ patches:
   - target:
       kind: Subscription
       name: servicemeshoperator
+    patch: |-
+      - op: replace
+        path: /spec/source
+        value: cs-rhoai-redhat-operator-index-v4-18
+  - target:
+      kind: Subscription
+      name: rhods-operator
     patch: |-
       - op: replace
         path: /spec/source
