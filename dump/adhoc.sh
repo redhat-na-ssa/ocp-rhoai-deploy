@@ -46,3 +46,11 @@ oc-mirror \
   --v2 \
   --image-timeout 60m \
   --authfile $XDG_RUNTIME_DIR/containers/auth.json
+
+oc-mirror \
+  -c scratch/isc-rhoai-2.22.yaml \
+  --workspace file:///${PWD}/scratch/oc-mirror \
+  docker://"${REGISTRY}" \
+  --v2 \
+  --image-timeout 60m \
+  --authfile $XDG_RUNTIME_DIR/containers/auth.json
