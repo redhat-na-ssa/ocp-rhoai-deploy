@@ -13,9 +13,9 @@ mirror:
       targetTag: 'v4.18'
       packages:
         - name: gpu-operator-certified
-          defaultChannel: stable
+          defaultChannel: 'v25.3'
           channels:
-          - name: v25.3
+          - name: 'v25.3'
             minVersion: 25.3.4
             maxVersion: 25.3.4
   # additionalImages:
