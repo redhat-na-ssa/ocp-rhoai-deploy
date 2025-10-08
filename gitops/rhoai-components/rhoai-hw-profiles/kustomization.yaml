@@ -4,3 +4,6 @@ kind: Kustomization
 resources:
   - nvidia-hw-profile-25-percent.yaml
   - nvidia-hw-profile-100-percent.yaml
+  - demo-hw-profile-ns.yaml
+  - wb-100-percent.yaml
+  - wb-25-percent.yaml
