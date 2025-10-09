@@ -6,21 +6,21 @@ metadata:
     notebooks.opendatahub.io/last-image-selection: pytorch:2025.1
     notebooks.opendatahub.io/last-image-version-git-commit-selection: 1d7de4c
     notebooks.opendatahub.io/last-size-selection: ""
-    notebooks.opendatahub.io/oauth-logout-url: https://rhods-dashboard-redhat-ods-applications.apps.cluster-mh5bv.mh5bv.sandbox5379.opentlc.com/projects/demo-hw-profile?notebookLogout=wb-100-percent
+    notebooks.opendatahub.io/oauth-logout-url: https://rhods-dashboard-redhat-ods-applications.apps.cluster-mh5bv.mh5bv.sandbox5379.opentlc.com/projects/demo-hw-profile?notebookLogout=wb3-25-percent
     opendatahub.io/accelerator-name: ""
-    opendatahub.io/hardware-profile-name: nvidia-100-percent
+    opendatahub.io/hardware-profile-name: nvidia-25-percent
     opendatahub.io/hardware-profile-namespace: ""
     opendatahub.io/image-display-name: PyTorch
     opendatahub.io/username: admin
     opendatahub.io/workbench-image-namespace: ""
     openshift.io/description: ""
-    openshift.io/display-name: wb-100-percent
+    openshift.io/display-name: wb3-25-percent
   labels:
-    app: wb-100-percent
+    app: wb3-25-percent
     opendatahub.io/dashboard: "true"
     opendatahub.io/odh-managed: "true"
     opendatahub.io/user: admin
-  name: wb-100-percent
+  name: wb3-25-percent
   namespace: demo-hw-profile
 spec:
   template:
@@ -32,11 +32,13 @@ spec:
             --ServerApp.port=8888
                               --ServerApp.token=''
                               --ServerApp.password=''
-                              --ServerApp.base_url=/notebook/demo-hw-profile/wb-100-percent
+                              --ServerApp.base_url=/notebook/demo-hw-profile/wb3-25-percent
                               --ServerApp.quit_button=False
                               --ServerApp.tornado_settings={"user":"admin","hub_host":"https://rhods-dashboard-redhat-ods-applications.apps.cluster-mh5bv.mh5bv.sandbox5379.opentlc.com","hub_prefix":"/projects/demo-hw-profile"}
         - name: JUPYTER_IMAGE
           value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/pytorch:2025.1
+        - name: GIT_SSL_CAINFO
+          value: /etc/pki/tls/custom-certs/ca-bundle.crt
         - name: PIP_CERT
           value: /etc/pki/tls/custom-certs/ca-bundle.crt
         - name: REQUESTS_CA_BUNDLE
@@ -45,21 +47,19 @@ spec:
           value: /etc/pki/tls/custom-certs/ca-bundle.crt
         - name: PIPELINES_SSL_SA_CERTS
           value: /etc/pki/tls/custom-certs/ca-bundle.crt
-        - name: GIT_SSL_CAINFO
-          value: /etc/pki/tls/custom-certs/ca-bundle.crt
         image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/pytorch:2025.1
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
           httpGet:
-            path: /notebook/demo-hw-profile/wb-100-percent/api
+            path: /notebook/demo-hw-profile/wb3-25-percent/api
             port: notebook-port
             scheme: HTTP
           initialDelaySeconds: 10
           periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 1
-        name: wb-100-percent
+        name: wb3-25-percent
         ports:
         - containerPort: 8888
           name: notebook-port
@@ -67,7 +67,7 @@ spec:
         readinessProbe:
           failureThreshold: 3
           httpGet:
-            path: /notebook/demo-hw-profile/wb-100-percent/api
+            path: /notebook/demo-hw-profile/wb3-25-percent/api
             port: notebook-port
             scheme: HTTP
           initialDelaySeconds: 10
@@ -97,7 +97,7 @@ spec:
         - --provider=openshift
         - --https-address=:8443
         - --http-address=
-        - --openshift-service-account=wb-100-percent
+        - --openshift-service-account=wb3-25-percent
         - --cookie-secret-file=/etc/oauth/config/cookie_secret
         - --cookie-expire=24h0m0s
         - --tls-cert=/etc/tls/private/tls.crt
@@ -106,11 +106,11 @@ spec:
         - --upstream-ca=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         - --email-domain=*
         - --skip-provider-button
-        - --client-id=wb-100-percent-demo-hw-profile-oauth-client
+        - --client-id=wb3-25-percent-demo-hw-profile-oauth-client
         - --client-secret-file=/etc/oauth/client/secret
         - --scope=user:info user:check-access
-        - --openshift-sar={"verb":"get","resource":"notebooks","resourceAPIGroup":"kubeflow.org","resourceName":"wb-100-percent","namespace":"$(NAMESPACE)"}
-        - --logout-url=https://rhods-dashboard-redhat-ods-applications.apps.cluster-mh5bv.mh5bv.sandbox5379.opentlc.com/projects/demo-hw-profile?notebookLogout=wb-100-percent
+        - --openshift-sar={"verb":"get","resource":"notebooks","resourceAPIGroup":"kubeflow.org","resourceName":"wb3-25-percent","namespace":"$(NAMESPACE)"}
+        - --logout-url=https://rhods-dashboard-redhat-ods-applications.apps.cluster-mh5bv.mh5bv.sandbox5379.opentlc.com/projects/demo-hw-profile?notebookLogout=wb3-25-percent
         env:
         - name: NAMESPACE
           valueFrom:
@@ -159,13 +159,13 @@ spec:
           name: tls-certificates
       enableServiceLinks: false
       nodeSelector:
-        nvidia.com/gpu.sharing-strategy: none
-      serviceAccountName: wb-100-percent
+        nvidia.com/gpu.sharing-strategy: time-slicing
+      serviceAccountName: wb3-25-percent
       tolerations:
       - effect: NoSchedule
         key: nvidia.com/gpu
         operator: Equal
-        value: "100"
+        value: "25"
       volumes:
       - emptyDir:
           medium: Memory
@@ -184,12 +184,12 @@ spec:
       - name: oauth-config
         secret:
           defaultMode: 420
-          secretName: wb-100-percent-oauth-config
+          secretName: wb3-25-percent-oauth-config
       - name: oauth-client
         secret:
           defaultMode: 420
-          secretName: wb-100-percent-oauth-client
+          secretName: wb3-25-percent-oauth-client
       - name: tls-certificates
         secret:
           defaultMode: 420
-          secretName: wb-100-percent-tls
+          secretName: wb3-25-percent-tls

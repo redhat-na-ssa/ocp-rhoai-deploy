@@ -59,7 +59,7 @@ spec:
     enabled: true
     config:
       name: time-slicing-config
-      default: t4-timeslice
+      default: ''
   gfd:
     enabled: true
   migManager:

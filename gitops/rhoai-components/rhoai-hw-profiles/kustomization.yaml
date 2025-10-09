@@ -6,4 +6,7 @@ resources:
   - nvidia-hw-profile-100-percent.yaml
   - demo-hw-profile-ns.yaml
   - wb-100-percent.yaml
-  - wb-25-percent.yaml
+  - wb1-25-percent.yaml
+  - wb2-25-percent.yaml
+  - wb3-25-percent.yaml
+  - wb4-25-percent.yaml
