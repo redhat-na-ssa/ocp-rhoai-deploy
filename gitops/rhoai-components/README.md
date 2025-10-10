@@ -22,13 +22,12 @@ This directory contains Kustomize packages that configure and extend Red Hat Ope
 Apply any component independently:
 
 ```bash
-oc apply -k gitops/rhoai-components/rhoai-cluster-settings
-oc apply -k gitops/rhoai-components/rhoai-enable-features
-oc apply -k gitops/rhoai-components/rhoai-enable-model-registry
-oc apply -k gitops/rhoai-components/rhoai-configure-logging
-oc apply -k gitops/rhoai-components/rhoai-gpu-timeslicing
-oc apply -k gitops/rhoai-components/rhoai-hw-profiles
-oc apply -k gitops/rhoai-components/rhoai-project-resource-quota
+until oc apply -k gitops/rhoai-components/rhoai-cluster-settings; do : ; done
+until oc apply -k gitops/rhoai-components/rhoai-enable-features; do : ; done
+until oc apply -k gitops/rhoai-components/rhoai-configure-logging; do : ; done
+until oc apply -k gitops/rhoai-components/rhoai-gpu-timeslicing; do : ; done
+until oc apply -k gitops/rhoai-components/rhoai-hw-profiles; do : ; done
+until oc apply -kgitops/rhoai-components/rhoai-project-resource-quota; do : ; done
 ```
 
 ### Removal
