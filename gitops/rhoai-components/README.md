@@ -28,6 +28,7 @@ until oc apply -k gitops/rhoai-components/rhoai-configure-logging; do : ; done
 until oc apply -k gitops/rhoai-components/rhoai-gpu-timeslicing; do : ; done
 until oc apply -k gitops/rhoai-components/rhoai-hw-profiles; do : ; done
 until oc apply -kgitops/rhoai-components/rhoai-project-resource-quota; do : ; done
+until oc apply -kgitops/rhoai-components/rhoai-gpu-dashboard; do : ; done
 ```
 
 ### Removal
