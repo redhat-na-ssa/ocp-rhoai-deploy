@@ -39,7 +39,3 @@ oc-mirror \
   --image-timeout 60m \
   --authfile $XDG_RUNTIME_DIR/containers/auth.json
 
-oc apply -f scratch/oc-mirror/working-dir/cluster-resources
-
-oc apply -f configs/catalogs
-oc apply -f scratch/operatorhub.yaml
