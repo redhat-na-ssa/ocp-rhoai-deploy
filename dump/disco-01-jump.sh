@@ -56,4 +56,4 @@ mirror_images
 
 # copy ocp install configs to highside
 rsync -av ${PWD}/scratch/oc-mirror/working-dir/cluster-resources highside:/mnt/high-side-data/
-rsync -av ${PWD}/scratch/config/catalogs highside:/mnt/high-side-data/
+rsync -av ${PWD}/scratch/catalogs highside:/mnt/high-side-data/
