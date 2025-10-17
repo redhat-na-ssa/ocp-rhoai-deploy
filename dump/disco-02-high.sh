@@ -53,7 +53,7 @@ $(sed 's/^/  /' /home/lab-user/quay-install/quay-rootCA/rootCA.pem)
 EOF
 
 # setup mirror
-echo"
+echo "
 imageDigestSources:
 $(grep "mirrors:" -A 2 --no-group-separator /mnt/high-side-data/cluster-resources/idms-oc-mirror.yaml) | tee -a /mnt/high-side-data/install-config.yaml
 "
