@@ -36,7 +36,8 @@ additionalTrustBundlePolicy: Always
 EOF
 
 # add ssh key to install
-ssh-keygen -C "OpenShift Debug" -N "" -f /mnt/high-side-data/id_rsa
+[ -e /mnt/high-side-data/id_rsa ] || \
+  ssh-keygen -C "OpenShift Debug" -N "" -f /mnt/high-side-data/id_rsa
 echo "sshKey: $(cat /mnt/high-side-data/id_rsa.pub)" | tee -a /mnt/high-side-data/install-config.yaml
 
 # login to highside registry
