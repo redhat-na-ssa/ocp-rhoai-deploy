@@ -59,4 +59,7 @@ EOF
 # EOF
 
 # install ocp
-# /mnt/high-side-data/openshift-install create cluster --dir /mnt/high-side-data/ocp
+mkdir -p /mnt/high-side-data/install
+cp /mnt/high-side-data/install-config.yaml /mnt/high-side-data/install
+
+# /mnt/high-side-data/openshift-install create cluster --dir /mnt/high-side-data/install
