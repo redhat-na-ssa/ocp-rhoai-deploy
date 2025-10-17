@@ -40,13 +40,20 @@ REGISTRY=$(ssh highside hostname):8443
 podman login -u init -p discopass ${REGISTRY}
 
 # mirror all the images
-oc-mirror \
-  -c scratch/isc-combo.yaml \
-  --workspace file:///${PWD}/scratch/oc-mirror \
-  docker://"${REGISTRY}" \
-  --v2 \
-  --image-timeout 60m \
-  --authfile $XDG_RUNTIME_DIR/containers/auth.json
+mirror_images(){
+  [ -e ${PWD}/scratch/oc-mirror/working-dir/cluster-resources ] && return 0
+
+  oc-mirror \
+    -c scratch/isc-combo.yaml \
+    --workspace file:///${PWD}/scratch/oc-mirror \
+    docker://"${REGISTRY}" \
+    --v2 \
+    --image-timeout 60m \
+    --authfile ${XDG_RUNTIME_DIR}/containers/auth.json
+}
+
+mirror_images
 
 # copy ocp install configs to highside
-rsync -av scratch/config/catalogs highside:/mnt/high-side-data/
+rsync -av ${PWD}/scratch/oc-mirror/working-dir/cluster-resources highside:/mnt/high-side-data/
+rsync -av ${PWD}/scratch/config/catalogs highside:/mnt/high-side-data/

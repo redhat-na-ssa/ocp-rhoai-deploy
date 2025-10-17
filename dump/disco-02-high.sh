@@ -35,14 +35,14 @@ publish: Internal
 additionalTrustBundlePolicy: Always
 EOF
 
-# setup ssh
+# add ssh key to install
 ssh-keygen -C "OpenShift Debug" -N "" -f /mnt/high-side-data/id_rsa
 echo "sshKey: $(cat /mnt/high-side-data/id_rsa.pub)" | tee -a /mnt/high-side-data/install-config.yaml
 
-# setup registry pull secret
+# add pull secret to install
 echo "pullSecret: '$(jq -c . $XDG_RUNTIME_DIR/containers/auth.json)'" | tee -a /mnt/high-side-data/install-config.yaml
 
-# setup CA
+# add CA to install
 cat << EOF >> /mnt/high-side-data/install-config.yaml
 additionalTrustBundle: |
 $(sed 's/^/  /' /home/lab-user/quay-install/quay-rootCA/rootCA.pem)
