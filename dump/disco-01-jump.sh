@@ -5,11 +5,6 @@ scripts/bootstrap.sh
 
 # adhoc for disconnected setup
 
-install_quay(){
-  ssh highside [ -e $HOME/quay-install ] && return 0
-  ssh highside /mnt/high-side-data/mirror-registry install --initPassword discopass
-}
-
 # copy configs to scratch
 cp -nr configs/* scratch/
 
@@ -19,7 +14,12 @@ sudo chmod +x /usr/local/bin/*
 
 # install cli tools on highside
 rsync -avP scratch/bin/{oc,openshift*,kube*} highside:/mnt/high-side-data/
-rsync -avP scratch/bin/{mirror-registry,*.tar} highside:/mnt/high-side-data/mirror-registry/
+rsync -avP scratch/bin/{mirror-registry,*.tar} highside:/mnt/high-side-data/quay/
+
+install_quay(){
+  ssh highside [ -e $HOME/quay-install ] && return 0
+  ssh highside /mnt/high-side-data/quay/mirror-registry install --initPassword discopass
+}
 
 install_quay
 
