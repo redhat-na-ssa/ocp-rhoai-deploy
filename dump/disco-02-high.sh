@@ -71,3 +71,5 @@ install_openshift(){
 
   /mnt/high-side-data/openshift-install create cluster --dir /mnt/high-side-data/install
 }
+
+install_openshift
