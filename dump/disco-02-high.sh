@@ -39,6 +39,10 @@ EOF
 ssh-keygen -C "OpenShift Debug" -N "" -f /mnt/high-side-data/id_rsa
 echo "sshKey: $(cat /mnt/high-side-data/id_rsa.pub)" | tee -a /mnt/high-side-data/install-config.yaml
 
+# login to highside registry
+REGISTRY=$(hostname):8443
+podman login -u init -p discopass ${REGISTRY}
+
 # add pull secret to install
 echo "pullSecret: '$(jq -c . $XDG_RUNTIME_DIR/containers/auth.json)'" | tee -a /mnt/high-side-data/install-config.yaml
 
