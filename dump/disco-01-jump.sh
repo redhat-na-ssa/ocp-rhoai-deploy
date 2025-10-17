@@ -9,7 +9,7 @@ install_quay(){
   ssh highside /mnt/high-side-data/mirror-registry install --initPassword discopass
 }
 
-cp -n configs/* scratch/
+cp -nr configs/* scratch/
 
 sudo cp scratch/bin/{oc*,kube*} /usr/local/bin/
 sudo chmod +x /usr/local/bin/*
