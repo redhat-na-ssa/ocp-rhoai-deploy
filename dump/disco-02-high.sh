@@ -52,14 +52,22 @@ additionalTrustBundle: |
 $(sed 's/^/  /' /home/lab-user/quay-install/quay-rootCA/rootCA.pem)
 EOF
 
-# setup mirrorsets
-# cat << EOF >> /mnt/high-side-data/install-config.yaml
-# imageDigestSources:
-# $(grep "mirrors:" -A 2 --no-group-separator cluster-resources/idms-oc-mirror.yaml)
-# EOF
+# setup mirror
+echo"
+imageDigestSources:
+$(grep "mirrors:" -A 2 --no-group-separator /mnt/high-side-data/cluster-resources/idms-oc-mirror.yaml)
+"
 
 # install ocp
-mkdir -p /mnt/high-side-data/install
-cp /mnt/high-side-data/install-config.yaml /mnt/high-side-data/install
+install_openshift(){
+  [ -e /mnt/high-side-data/install ] && return 0
+  
+  mkdir -p /mnt/high-side-data/install
+  cp /mnt/high-side-data/install-config.yaml /mnt/high-side-data/install
+  
+  /mnt/high-side-data/openshift-install create manifests --dir /mnt/high-side-data/install
+  
+  cp -a /mnt/high-side-data/cluster-resources/*.yaml /mnt/high-side-data/install
 
-# /mnt/high-side-data/openshift-install create cluster --dir /mnt/high-side-data/install
+  /mnt/high-side-data/openshift-install create cluster --dir /mnt/high-side-data/install
+}
