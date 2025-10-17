@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# create ocp install
 cat << EOF > /mnt/high-side-data/install-config.yaml
 ---
 apiVersion: v1
@@ -34,19 +35,24 @@ publish: Internal
 additionalTrustBundlePolicy: Always
 EOF
 
+# setup ssh
 ssh-keygen -C "OpenShift Debug" -N "" -f /mnt/high-side-data/id_rsa
 echo "sshKey: $(cat /mnt/high-side-data/id_rsa.pub)" | tee -a /mnt/high-side-data/install-config.yaml
 
+# setup registry pull secret
 echo "pullSecret: '$(jq -c . $XDG_RUNTIME_DIR/containers/auth.json)'" | tee -a /mnt/high-side-data/install-config.yaml
 
+# setup CA
 cat << EOF >> /mnt/high-side-data/install-config.yaml
 additionalTrustBundle: |
 $(sed 's/^/  /' /home/lab-user/quay-install/quay-rootCA/rootCA.pem)
 EOF
 
-cat << EOF >> /mnt/high-side-data/install-config.yaml
-imageDigestSources:
-$(grep "mirrors:" -A 2 --no-group-separator cluster-resources/idms-oc-mirror.yaml)
-EOF
+# setup mirrorsets
+# cat << EOF >> /mnt/high-side-data/install-config.yaml
+# imageDigestSources:
+# $(grep "mirrors:" -A 2 --no-group-separator cluster-resources/idms-oc-mirror.yaml)
+# EOF
 
-/mnt/high-side-data/openshift-install create cluster --dir /mnt/high-side-data/ocp
+# install ocp
+# /mnt/high-side-data/openshift-install create cluster --dir /mnt/high-side-data/ocp
