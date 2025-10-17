@@ -18,7 +18,8 @@ sudo cp scratch/bin/{oc*,kube*} /usr/local/bin/
 sudo chmod +x /usr/local/bin/*
 
 # install cli tools on highside
-rsync -avP scratch/bin/{mirror-registry,*.tar,oc,openshift*,kube*} highside:/mnt/high-side-data/
+rsync -avP scratch/bin/{oc,openshift*,kube*} highside:/mnt/high-side-data/
+rsync -avP scratch/bin/{mirror-registry,*.tar} highside:/mnt/high-side-data/mirror-registry/
 
 install_quay
 
