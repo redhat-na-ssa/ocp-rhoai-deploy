@@ -30,7 +30,7 @@ platform:
   aws:
     region: us-east-2
     subnets:
-    - subnet-02e59fc9c2e36d590
+    - $(aws ec2 describe-subnets --filters "Name=tag:aws:cloudformation:logical-id,Values=*Private*" --query "Subnets[*].SubnetId" --output text)
 publish: Internal
 additionalTrustBundlePolicy: Always
 EOF
