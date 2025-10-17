@@ -67,7 +67,7 @@ install_openshift(){
   
   /mnt/high-side-data/openshift-install create manifests --dir /mnt/high-side-data/install
   
-  cp -a /mnt/high-side-data/cluster-resources/*.yaml /mnt/high-side-data/install
+  cp -a /mnt/high-side-data/cluster-resources/*.yaml /mnt/high-side-data/install/manifests
 
   /mnt/high-side-data/openshift-install create cluster --dir /mnt/high-side-data/install
 }
