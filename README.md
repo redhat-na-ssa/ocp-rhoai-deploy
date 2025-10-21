@@ -32,6 +32,8 @@ ocp_machineset_scale 1
 
 Setup Mig profile on node
 
+See [Nvidia Docs - MIG](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/gpu-operator-mig.html)
+
 ```sh
 # patch gpu cluster policy
 patch clusterpolicies.nvidia.com/cluster-policy \
