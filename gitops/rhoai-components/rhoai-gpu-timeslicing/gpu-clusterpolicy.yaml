@@ -59,7 +59,7 @@ spec:
     enabled: true
     config:
       name: time-slicing-config
-      default: ''
+      default: 'time-sliced-2'
   gfd:
     enabled: true
   migManager:
