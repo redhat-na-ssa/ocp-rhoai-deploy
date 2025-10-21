@@ -6,6 +6,19 @@ Red Hat Demo System
 
 [OpenShift Disconnected Workshop](https://catalog.demo.redhat.com/catalog?item=babylon-catalog-prod/sandboxes-gpte.ocp4-disconnected.prod&utm_source=webapp&utm_medium=share-link)
 
+## Greased Path
+
+[disco-01-jump.sh](disco-01-jump.sh)
+
+```sh
+# run on jump host
+docs/disconnected/disco-01-jump.sh
+
+# run on high side
+# ssh highside
+docs/disconnected/disco-02-high.sh
+```
+
 ## General Info
 
 `oc-mirror` config for:
