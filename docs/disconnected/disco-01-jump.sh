@@ -61,5 +61,3 @@ rsync -av ${PWD}/scratch/catalogs highside:/mnt/high-side-data/
 
 # copy script to highside
 scp dump/*-high.sh highside:/mnt/high-side-data/
-
-
