@@ -3,3 +3,8 @@ kind: Kustomization
 
 resources:
   - ../../gitops/nvidia-gpu-verification/overlays/toleration
+
+patches:
+  - path: patch-deploy.yaml
+    target:
+      kind: Deployment
