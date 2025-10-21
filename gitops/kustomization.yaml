@@ -10,6 +10,7 @@ resources:
   # - operators/cincinnati-operator/operator/overlays/v1
   # - nvidia - TODO
   - operators/nvidia-gpu-operator
+  - operators/nfd/instance/overlays/default
   - operators/nfd/operator/overlays/stable
   - operators/rhods-operator/instance/overlays/all
   - operators/rhods-operator/operator/overlays/stable-2.22
