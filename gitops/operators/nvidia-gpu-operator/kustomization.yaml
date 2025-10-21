@@ -3,6 +3,8 @@ kind: Kustomization
 
 resources:
   # - https://github.com/redhat-na-ssa/demo-ai-gitops-catalog/components/operators/gpu-operator-certified/operator/overlays/stable?ref=v0.19
-
   # oc kustomize https://github.com/redhat-na-ssa/demo-ai-gitops-catalog/components/operators/gpu-operator-certified/operator/overlays/stable?ref=v0.19
   - operator.yaml
+  # - https://github.com/redhat-na-ssa/demo-ai-gitops-catalog/components/operators/gpu-operator-certified/instance/overlays/time-sliced-2?ref=v0.19
+  # oc kustomize https://github.com/redhat-na-ssa/demo-ai-gitops-catalog/components/operators/gpu-operator-certified/instance/overlays/time-sliced-2?ref=v0.19
+  - instance.yaml
