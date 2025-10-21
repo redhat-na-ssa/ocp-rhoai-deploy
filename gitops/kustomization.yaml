@@ -2,7 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 components:
-  - operators/nvidia-gpu-operator
   - operators/serverless-operator
   - operators/servicemeshoperator
   - operators/web-terminal
@@ -10,6 +9,7 @@ components:
 resources:
   # - operators/cincinnati-operator/operator/overlays/v1
   # - nvidia - TODO
+  - operators/nvidia-gpu-operator
   - operators/nfd/operator/overlays/stable
   - operators/rhods-operator/instance/overlays/all
   - operators/rhods-operator/operator/overlays/stable-2.22
