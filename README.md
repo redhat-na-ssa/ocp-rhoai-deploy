@@ -29,3 +29,21 @@ Setup GPU node in AWS
 ocp_aws_machineset_create_gpu
 ocp_machineset_scale 1
 ```
+
+Setup Mig profile on node
+
+```sh
+# patch gpu cluster policy
+patch clusterpolicies.nvidia.com/cluster-policy \
+  --type='json' \
+  -p='[{"op":"replace", "path":"/spec/mig/strategy", "value":"single"}]'
+
+# get mig profiles
+oc -n nvidia-gpu-operator \
+  describe cm default-mig-parted-config
+
+# label a node with a mig profile
+oc label nodes \
+  <node-name> \
+  nvidia.com/mig.config=all-1g.10gb --overwrite
+```
