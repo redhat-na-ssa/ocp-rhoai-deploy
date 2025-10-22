@@ -25,6 +25,12 @@ This directory contains Kustomize packages that configure and extend Red Hat Ope
 Apply any component independently:
 
 ```bash
+until oc apply -k gitops/rhoai-components/rhoai-configure-logging; do : ; done
+```
+
+Apply all components:
+
+```bash
 until oc apply -k gitops/rhoai-components; do : ; done
 ```
 
