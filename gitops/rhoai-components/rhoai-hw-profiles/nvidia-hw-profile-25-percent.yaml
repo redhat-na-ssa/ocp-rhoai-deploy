@@ -29,7 +29,7 @@ spec:
     minCount: 1
     resourceType: Accelerator
   nodeSelector:
-    nvidia.com/gpu.sharing-strategy: time-slicing
+    # nvidia.com/gpu.sharing-strategy: time-slicing
     nvidia.com/device-plugin.config: time-sliced-4
   tolerations:
   - effect: NoSchedule
