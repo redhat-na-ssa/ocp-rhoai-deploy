@@ -8,10 +8,10 @@ components:
   - rhoai-enable-features
 
 resources:
+  - nvidia-gpu-timeslicing
   - rhoai-cluster-settings
   - rhoai-configure-logging
   - rhoai-gpu-dashboard
-  - rhoai-gpu-timeslicing
   - rhoai-groups
   - rhoai-hw-profiles
   - rhoai-rbac
