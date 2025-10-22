@@ -30,8 +30,8 @@ spec:
     resourceType: Accelerator
   nodeSelector:
     nvidia.com/gpu.sharing-strategy: time-slicing
+    nvidia.com/device-plugin.config: time-sliced-4
   tolerations:
   - effect: NoSchedule
     key: nvidia.com/gpu
-    operator: Equal
-    value: "25"
+    operator: Exists

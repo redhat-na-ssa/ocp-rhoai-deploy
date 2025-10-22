@@ -30,7 +30,22 @@ ocp_aws_machineset_create_gpu
 ocp_machineset_scale 1
 ```
 
-Setup Mig profile on node
+## Apply device-plugin-config per node
+
+```sh
+# view configs
+oc describe cm device-plugin-config \
+  -n nvidia-gpu-operator
+
+# apply config per node
+DEVICE_CONFIG=time-sliced-4
+
+oc label node "${NODE_NAME}" \
+  --overwrite \
+  nvidia.com/device-plugin.config="${DEVICE_CONFIG}"
+```
+
+## Setup Mig profile on node
 
 See [Nvidia Docs - MIG](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/gpu-operator-mig.html)
 
