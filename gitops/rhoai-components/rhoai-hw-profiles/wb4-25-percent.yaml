@@ -159,7 +159,7 @@ spec:
           name: tls-certificates
       enableServiceLinks: false
       nodeSelector:
-        nvidia.com/gpu.sharing-strategy: time-slicing
+        nvidia.com/device-plugin.config: time-sliced-4
       serviceAccountName: wb4-25-percent
       tolerations:
       - effect: NoSchedule
