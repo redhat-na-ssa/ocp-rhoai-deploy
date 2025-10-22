@@ -1,5 +1,7 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
 
-resources:
-   - patch-odhdashboardconfig.yaml
+patches:
+  - path: patch-odhdashboardconfig.yaml
+    target:
+      kind: OdhDashboardConfig
