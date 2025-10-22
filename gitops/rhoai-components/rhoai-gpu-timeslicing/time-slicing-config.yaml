@@ -6,6 +6,8 @@ metadata:
 data:
   default: |-
     version: v1
+  none: |-
+    version: v1
   time-sliced-2: |-
     version: v1
     sharing:
