@@ -1,8 +1,8 @@
-## RHOAI Components
+# RHOAI Components
 
 This directory contains Kustomize packages that configure and extend Red Hat OpenShift AI (RHOAI) at the cluster and project level. Each subfolder is an independently applicable component that you can apply with `oc apply -k`.
 
-### Structure
+## Structure
 
 - `rhoai-cluster-settings/`: Cluster-wide defaults and dashboard tweaks for RHOAI
 - `rhoai-configure-logging/`: Adjust logging settings on the DataScienceCluster
@@ -25,14 +25,7 @@ This directory contains Kustomize packages that configure and extend Red Hat Ope
 Apply any component independently:
 
 ```bash
-until oc apply -k gitops/rhoai-components/rhoai-cluster-settings; do : ; done
-until oc apply -k gitops/rhoai-components/rhoai-enable-features; do : ; done
-until oc apply -k gitops/rhoai-components/rhoai-configure-logging; do : ; done
-until oc apply -k gitops/rhoai-components/rhoai-gpu-timeslicing; do : ; done
-until oc apply -k gitops/rhoai-components/rhoai-hw-profiles; do : ; done
-until oc apply -k gitops/rhoai-components/rhoai-resource-quota; do : ; done
-until oc apply -k gitops/rhoai-components/rhoai-gpu-dashboard; do : ; done
-until oc apply -k gitops/rhoai-components/rhoai-vllm-monitoring; do : ; done
+until oc apply -k gitops/rhoai-components; do : ; done
 ```
 
 ### Removal
