@@ -12,7 +12,9 @@ spec:
       USER 0
 
       # install os dependencies
-      RUN dnf install -y gcc g++ diffutils
+      RUN dnf install -y gcc g++ diffutils && \
+          yum -y clean all && \
+          rm -rf /var/cache
 
       USER 1001
   strategy:

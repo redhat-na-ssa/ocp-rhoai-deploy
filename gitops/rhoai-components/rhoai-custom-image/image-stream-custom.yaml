@@ -8,8 +8,8 @@ metadata:
 
       A custom notebook with a base image based on:
       registry.redhat.io/rhoai/odh-workbench-jupyter-pytorch-cuda-py312-rhel9
-    opendatahub.io/notebook-image-name: 'Custom Notebook'
-    opendatahub.io/notebook-image-order: '10'
+    opendatahub.io/notebook-image-name: 'Custom - Jupyter | PyTorch | CUDA | Python 3.12'
+    opendatahub.io/notebook-image-order: '-1'
     opendatahub.io/notebook-image-url: https://github.com/redhat-na-ssa/demo-ai-gitops-catalog
     opendatahub.io/recommended-accelerators: '["nvidia.com/gpu"]'
   labels:
@@ -56,7 +56,6 @@ spec:
             {"name": "Python", "version": "v3.12"},
             {"name": "PyTorch", "version": "2.6"}
           ]
-        opendatahub.io/workbench-image-recommended: 'true'
         openshift.io/imported-from: quay.io/opendatahub/workbench-images
       from:
         kind: DockerImage
