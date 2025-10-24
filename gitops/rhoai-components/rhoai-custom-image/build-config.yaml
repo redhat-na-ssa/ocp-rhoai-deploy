@@ -1,0 +1,32 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: notebook-custom
+  namespace: redhat-ods-applications
+spec:
+  source:
+    type: Dockerfile
+    dockerfile: |
+      FROM base-image
+
+      USER 0
+
+      # install os dependencies
+      RUN dnf install -y gcc g++ diffutils
+
+      USER 1001
+  strategy:
+    type: Docker
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: notebook-custom:base
+        namespace: redhat-ods-applications
+  output:
+    to:
+      kind: ImageStreamTag
+      name: notebook-custom:latest
+      namespace: redhat-ods-applications
+  triggers:
+    - type: ImageChange
+    - type: ConfigChange

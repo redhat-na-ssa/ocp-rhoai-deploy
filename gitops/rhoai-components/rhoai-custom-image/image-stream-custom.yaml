@@ -1,0 +1,99 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  annotations:
+    opendatahub.io/notebook-image-creator: ai-catalog
+    opendatahub.io/notebook-image-desc: |
+      Custom Notebook
+
+      A custom notebook with a base image based on:
+      registry.redhat.io/rhoai/odh-workbench-jupyter-pytorch-cuda-py312-rhel9
+    opendatahub.io/notebook-image-name: 'Custom Notebook'
+    opendatahub.io/notebook-image-order: '10'
+    opendatahub.io/notebook-image-url: https://github.com/redhat-na-ssa/demo-ai-gitops-catalog
+    opendatahub.io/recommended-accelerators: '["nvidia.com/gpu"]'
+  labels:
+    # note: the following label allows the notebook to show up in the dashboard
+    # note: byon = bring your own notebook?
+    app.kubernetes.io/created-by: byon
+    component.opendatahub.io/name: jupyterhub
+    opendatahub.io/component: 'true'
+    opendatahub.io/notebook-image: 'true'
+  name: notebook-custom
+  namespace: redhat-ods-applications
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - name: 'base'
+      annotations:
+        opendatahub.io/notebook-build-commit: 8e73cac
+        opendatahub.io/notebook-python-dependencies: |
+          [
+            {"name": "JupyterLab","version": "4.4"},
+            {"name": "PyTorch", "version": "2.6"},
+            {"name": "Tensorboard", "version": "2.19"},
+            {"name": "Boto3", "version": "1.37"},
+            {"name": "Kafka-Python-ng", "version": "2.2"},
+            {"name": "Kfp", "version": "2.12"},
+            {"name": "Matplotlib", "version": "3.10"},
+            {"name": "Numpy", "version": "2.2"},
+            {"name": "Pandas", "version": "2.2"},
+            {"name": "Scikit-learn", "version": "1.6"},
+            {"name": "Scipy", "version": "1.15"},
+            {"name": "Odh-Elyra", "version": "4.2"},
+            {"name": "PyMongo", "version": "4.11"},
+            {"name": "Pyodbc", "version": "5.2"},
+            {"name": "Codeflare-SDK", "version": "0.30"},
+            {"name": "Sklearn-onnx", "version": "1.18"},
+            {"name": "Psycopg", "version": "3.2"},
+            {"name": "MySQL Connector/Python", "version": "9.3"},
+            {"name": "Kubeflow-Training", "version": "1.9"}
+          ]
+        opendatahub.io/notebook-software: |
+          [
+            {"name": "CUDA", "version": "12.6"},
+            {"name": "Python", "version": "v3.12"},
+            {"name": "PyTorch", "version": "2.6"}
+          ]
+        opendatahub.io/workbench-image-recommended: 'true'
+        openshift.io/imported-from: quay.io/opendatahub/workbench-images
+      from:
+        kind: DockerImage
+        name: 'registry.redhat.io/rhoai/odh-workbench-jupyter-pytorch-cuda-py312-rhel9@sha256:67ded16a5d228c4cedb2d7a92d888a1182f97cec5de4af3ccffdd5f587ac5136'
+      importPolicy:
+        importMode: Legacy
+      referencePolicy:
+        type: Source
+    - name: latest
+      annotations:
+        opendatahub.io/default-image: 'true'
+        opendatahub.io/workbench-image-recommended: 'true'
+        opendatahub.io/notebook-python-dependencies: |
+          [
+            {"name": "JupyterLab","version": "4.4"},
+            {"name": "PyTorch", "version": "2.6"},
+            {"name": "Tensorboard", "version": "2.19"},
+            {"name": "Boto3", "version": "1.37"},
+            {"name": "Kafka-Python-ng", "version": "2.2"},
+            {"name": "Kfp", "version": "2.12"},
+            {"name": "Matplotlib", "version": "3.10"},
+            {"name": "Numpy", "version": "2.2"},
+            {"name": "Pandas", "version": "2.2"},
+            {"name": "Scikit-learn", "version": "1.6"},
+            {"name": "Scipy", "version": "1.15"},
+            {"name": "Odh-Elyra", "version": "4.2"},
+            {"name": "PyMongo", "version": "4.11"},
+            {"name": "Pyodbc", "version": "5.2"},
+            {"name": "Codeflare-SDK", "version": "0.30"},
+            {"name": "Sklearn-onnx", "version": "1.18"},
+            {"name": "Psycopg", "version": "3.2"},
+            {"name": "MySQL Connector/Python", "version": "9.3"},
+            {"name": "Kubeflow-Training", "version": "1.9"}
+          ]
+        opendatahub.io/notebook-software: |
+          [
+            {"name": "CUDA", "version": "12.6"},
+            {"name": "Python", "version": "v3.12"},
+            {"name": "PyTorch", "version": "2.6"}
+          ]

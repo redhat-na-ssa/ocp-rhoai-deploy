@@ -1,0 +1,69 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  annotations:
+    platform.opendatahub.io/instance.name: default-workbenches
+    opendatahub.io/notebook-image-order: '10'
+    opendatahub.io/notebook-image-url: 'https://github.com/opendatahub-io/notebooks/blob/main/jupyter/pytorch'
+    internal.config.kubernetes.io/previousKinds: ImageStream
+    platform.opendatahub.io/instance.generation: '1'
+    opendatahub.io/notebook-image-name: Jupyter | PyTorch | CUDA | Python 3.12
+    internal.config.kubernetes.io/previousNames: jupyter-pytorch-cuda-py312-ubi9
+    opendatahub.io/recommended-accelerators: '["nvidia.com/gpu"]'
+    platform.opendatahub.io/version: 2.25.0
+    opendatahub.io/notebook-image-desc: Jupyter notebook image with PyTorch libraries and dependencies to start experimenting with advanced AI/ML notebooks.
+    platform.opendatahub.io/type: OpenShift AI Self-Managed
+  name: jupyter-pytorch-cuda-py312-ubi9
+  namespace: redhat-ods-applications
+  labels:
+    app.kubernetes.io/part-of: workbenches
+    app.opendatahub.io/workbenches: 'true'
+    component.opendatahub.io/name: notebooks
+    opendatahub.io/component: 'true'
+    opendatahub.io/notebook-image: 'false'
+    platform.opendatahub.io/part-of: workbenches
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - name: '2025.1'
+      annotations:
+        opendatahub.io/notebook-build-commit: 8e73cac
+        opendatahub.io/notebook-python-dependencies: |
+          [
+            {"name": "JupyterLab","version": "4.4"},
+            {"name": "PyTorch", "version": "2.6"},
+            {"name": "Tensorboard", "version": "2.19"},
+            {"name": "Boto3", "version": "1.37"},
+            {"name": "Kafka-Python-ng", "version": "2.2"},
+            {"name": "Kfp", "version": "2.12"},
+            {"name": "Matplotlib", "version": "3.10"},
+            {"name": "Numpy", "version": "2.2"},
+            {"name": "Pandas", "version": "2.2"},
+            {"name": "Scikit-learn", "version": "1.6"},
+            {"name": "Scipy", "version": "1.15"},
+            {"name": "Odh-Elyra", "version": "4.2"},
+            {"name": "PyMongo", "version": "4.11"},
+            {"name": "Pyodbc", "version": "5.2"},
+            {"name": "Codeflare-SDK", "version": "0.30"},
+            {"name": "Sklearn-onnx", "version": "1.18"},
+            {"name": "Psycopg", "version": "3.2"},
+            {"name": "MySQL Connector/Python", "version": "9.3"},
+            {"name": "Kubeflow-Training", "version": "1.9"}
+          ]
+        opendatahub.io/notebook-software: |
+          [
+            {"name": "CUDA", "version": "12.6"},
+            {"name": "Python", "version": "v3.12"},
+            {"name": "PyTorch", "version": "2.6"}
+          ]
+        opendatahub.io/workbench-image-recommended: 'true'
+        openshift.io/imported-from: quay.io/opendatahub/workbench-images
+      from:
+        kind: DockerImage
+        name: 'registry.redhat.io/rhoai/odh-workbench-jupyter-pytorch-cuda-py312-rhel9@sha256:67ded16a5d228c4cedb2d7a92d888a1182f97cec5de4af3ccffdd5f587ac5136'
+      generation: 2
+      importPolicy:
+        importMode: Legacy
+      referencePolicy:
+        type: Source
