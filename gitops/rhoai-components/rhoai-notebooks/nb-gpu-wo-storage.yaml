@@ -157,8 +157,8 @@ spec:
         - mountPath: /etc/tls/private
           name: tls-certificates
       enableServiceLinks: false
-      nodeSelector:
-        nvidia.com/gpu.sharing-strategy: none
+      # nodeSelector:
+      #   nvidia.com/gpu.sharing-strategy: none
       serviceAccountName: wb-gpu-wo-storage
       tolerations:
       - effect: NoSchedule
