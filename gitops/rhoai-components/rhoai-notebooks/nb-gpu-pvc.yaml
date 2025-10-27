@@ -2,10 +2,10 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   annotations:
-    openshift.io/display-name: wb-cpu-w-storage-storage
+    openshift.io/display-name: wb-gpu-w-storage-storage
   labels:
     opendatahub.io/dashboard: "true"
-  name: wb-cpu-w-storage-storage
+  name: wb-gpu-w-storage-storage
   namespace: demo-notebooks
 spec:
   accessModes:
