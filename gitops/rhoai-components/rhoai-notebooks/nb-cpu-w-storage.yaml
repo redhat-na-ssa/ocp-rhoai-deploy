@@ -8,7 +8,7 @@ metadata:
     notebooks.opendatahub.io/last-size-selection: ""
     opendatahub.io/accelerator-name: ""
     opendatahub.io/accelerator-profile-namespace: ""
-    opendatahub.io/hardware-profile-name: large-notebooks-17kpw
+    # opendatahub.io/hardware-profile-name: large-notebooks-17kpw
     opendatahub.io/hardware-profile-namespace: redhat-ods-applications
     opendatahub.io/image-display-name: Jupyter | Minimal | CPU | Python 3.12
     opendatahub.io/legacy-hardware-profile-name: ""
