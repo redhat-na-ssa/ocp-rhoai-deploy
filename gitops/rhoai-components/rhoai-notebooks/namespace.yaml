@@ -5,4 +5,4 @@ metadata:
   annotations:
     openshift.io/description: |
       Project to demo RHOAI notebooks
-    openshift.io/display-name: demo-notebooks
+    openshift.io/display-name: Demo - RHOAI Notebooks
