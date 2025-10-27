@@ -4,7 +4,7 @@ metadata:
   annotations:
     opendatahub.io/dashboard-feature-visibility: '["workbench"]'
     opendatahub.io/disabled: "false"
-    opendatahub.io/display-name: Especial
+    opendatahub.io/display-name: 'Fun Sized'
   name: demo-sized
   namespace: demo-notebooks
 spec:
