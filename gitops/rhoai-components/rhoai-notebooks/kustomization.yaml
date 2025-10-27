@@ -8,6 +8,6 @@ resources:
   - nb-cpu-wo-storage.yaml
   - nb-cpu-w-storage.yaml
 
-  - nb-cpu-pvc.yaml
+  - nb-gpu-pvc.yaml
   - nb-gpu-wo-storage.yaml
   # - nb-gpu-w-storage.yaml
