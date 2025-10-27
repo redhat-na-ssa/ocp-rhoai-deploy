@@ -5,5 +5,5 @@ resources:
   - namespace.yaml
   - nb-cpu-wo-storage.yaml
   # - nb-cpu-w-storage.yaml
-  - nb-gpu-wo-storage.yaml
+  # - nb-gpu-wo-storage.yaml
   # - nb-gpu-w-storage.yaml
