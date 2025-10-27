@@ -11,4 +11,4 @@ resources:
 
   - nb-gpu-pvc.yaml
   - nb-gpu-wo-storage.yaml
-  # - nb-gpu-w-storage.yaml
+  - nb-gpu-w-storage.yaml
