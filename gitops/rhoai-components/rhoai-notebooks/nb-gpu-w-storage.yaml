@@ -75,11 +75,11 @@ spec:
         resources:
           limits:
             cpu: "1"
-            memory: 8Gi
+            memory: 4Gi
             nvidia.com/gpu: "1"
           requests:
             cpu: "1"
-            memory: 8Gi
+            memory: 4Gi
             nvidia.com/gpu: "1"
         volumeMounts:
         - mountPath: /opt/app-root/src/
