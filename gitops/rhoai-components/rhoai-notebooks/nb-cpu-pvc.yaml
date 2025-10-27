@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    openshift.io/display-name: wb-cpu-w-storage-storage
+  labels:
+    opendatahub.io/dashboard: "true"
+  name: wb-cpu-w-storage-storage
+  namespace: demo-notebooks
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
