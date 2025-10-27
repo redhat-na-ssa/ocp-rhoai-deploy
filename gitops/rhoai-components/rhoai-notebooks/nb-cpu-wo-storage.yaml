@@ -6,18 +6,22 @@ metadata:
     notebooks.opendatahub.io/last-image-selection: s2i-minimal-notebook:2025.2
     notebooks.opendatahub.io/last-image-version-git-commit-selection: d3137ca
     notebooks.opendatahub.io/last-size-selection: ""
+    # notebooks.opendatahub.io/oauth-logout-url: https://rhods-dashboard-redhat-ods-applications.apps.cluster-dc7lt.dc7lt.sandbox2796.opentlc.com/projects/demo-notebooks?notebookLogout=wb-cpu-wo-storage
     opendatahub.io/accelerator-name: ""
-    opendatahub.io/hardware-profile-name: ""
+    opendatahub.io/accelerator-profile-namespace: ""
+    opendatahub.io/hardware-profile-name: small-notebooks
+    opendatahub.io/hardware-profile-namespace: redhat-ods-applications
     opendatahub.io/image-display-name: Jupyter | Minimal | CPU | Python 3.12
     opendatahub.io/legacy-hardware-profile-name: ""
     opendatahub.io/username: automation
+    opendatahub.io/workbench-image-namespace: ""
     openshift.io/description: ""
     openshift.io/display-name: wb-cpu-wo-storage
   labels:
     app: wb-cpu-wo-storage
     opendatahub.io/dashboard: "true"
     opendatahub.io/odh-managed: "true"
-    opendatahub.io/user: "automation"
+    opendatahub.io/user: automation
   name: wb-cpu-wo-storage
   namespace: demo-notebooks
 spec:
@@ -25,14 +29,14 @@ spec:
     spec:
       containers:
       - env:
-        # - name: NOTEBOOK_ARGS
-        #   value: |-
-        #     --ServerApp.port=8888
-        #                       --ServerApp.token=''
-        #                       --ServerApp.password=''
-        #                       --ServerApp.base_url=/notebook/demo-notebooks/wb-cpu-wo-storage
-        #                       --ServerApp.quit_button=False
-        #                       --ServerApp.tornado_settings={"user":"kube-3aadmin","hub_host":"https://rhods-dashboard-redhat-ods-applications.apps.cluster-dc7lt.dc7lt.sandbox2796.opentlc.com","hub_prefix":"/projects/demo-notebooks"}
+        - name: NOTEBOOK_ARGS
+          value: |-
+            --ServerApp.port=8888
+                              --ServerApp.token=''
+                              --ServerApp.password=''
+                              --ServerApp.base_url=/notebook/demo-notebooks/wb-cpu-wo-storage
+                              --ServerApp.quit_button=False
+                              # --ServerApp.tornado_settings={"user":"kube-3aadmin","hub_host":"https://rhods-dashboard-redhat-ods-applications.apps.cluster","hub_prefix":"/projects/demo-notebooks"}
         - name: JUPYTER_IMAGE
           value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-minimal-notebook:2025.2
         - name: SSL_CERT_FILE
@@ -74,11 +78,11 @@ spec:
           timeoutSeconds: 1
         resources:
           limits:
-            cpu: "2"
-            memory: 4Gi
+            cpu: "1"
+            memory: 8Gi
           requests:
-            cpu: "2"
-            memory: 4Gi
+            cpu: "1"
+            memory: 8Gi
         volumeMounts:
         - mountPath: /dev/shm
           name: shm
@@ -106,7 +110,7 @@ spec:
         - --client-secret-file=/etc/oauth/client/secret
         - --scope=user:info user:check-access
         - --openshift-sar={"verb":"get","resource":"notebooks","resourceAPIGroup":"kubeflow.org","resourceName":"wb-cpu-wo-storage","namespace":"$(NAMESPACE)"}
-        # - --logout-url=https://rhods-dashboard-redhat-ods-applications.apps.cluster-dc7lt.dc7lt.sandbox2796.opentlc.com/projects/demo-notebooks?notebookLogout=wb-cpu-wo-storage
+        # - --logout-url=https://rhods-dashboard-redhat-ods-applications.apps.cluster/projects/demo-notebooks?notebookLogout=wb-cpu-wo-storage
         env:
         - name: NAMESPACE
           valueFrom:
