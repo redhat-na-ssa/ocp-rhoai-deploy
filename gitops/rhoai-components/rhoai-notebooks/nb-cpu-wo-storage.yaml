@@ -3,15 +3,14 @@ kind: Notebook
 metadata:
   annotations:
     notebooks.opendatahub.io/inject-oauth: "true"
-    notebooks.opendatahub.io/last-image-selection: pytorch:2025.1
-    notebooks.opendatahub.io/last-image-version-git-commit-selection: 1d7de4c
+    notebooks.opendatahub.io/last-image-selection: s2i-minimal-notebook:2025.2
+    notebooks.opendatahub.io/last-image-version-git-commit-selection: d3137ca
     notebooks.opendatahub.io/last-size-selection: ""
     opendatahub.io/accelerator-name: ""
-    # opendatahub.io/hardware-profile-name: nvidia-100-percent
-    opendatahub.io/hardware-profile-namespace: ""
-    opendatahub.io/image-display-name: PyTorch
-    opendatahub.io/username: admin
-    opendatahub.io/workbench-image-namespace: ""
+    opendatahub.io/hardware-profile-name: ""
+    opendatahub.io/image-display-name: Jupyter | Minimal | CPU | Python 3.12
+    opendatahub.io/legacy-hardware-profile-name: ""
+    opendatahub.io/username: automation
     openshift.io/description: ""
     openshift.io/display-name: wb-cpu-wo-storage
   labels:
@@ -33,20 +32,20 @@ spec:
         #                       --ServerApp.password=''
         #                       --ServerApp.base_url=/notebook/demo-notebooks/wb-cpu-wo-storage
         #                       --ServerApp.quit_button=False
-        #                       --ServerApp.tornado_settings={"user":"admin","hub_host":"https://rhods-dashboard-redhat-ods-applications.apps.cluster-mh5bv.mh5bv.sandbox5379.opentlc.com","hub_prefix":"/projects/demo-notebooks"}
+        #                       --ServerApp.tornado_settings={"user":"kube-3aadmin","hub_host":"https://rhods-dashboard-redhat-ods-applications.apps.cluster-dc7lt.dc7lt.sandbox2796.opentlc.com","hub_prefix":"/projects/demo-notebooks"}
         - name: JUPYTER_IMAGE
-          value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/pytorch:2025.1
-        - name: PIP_CERT
-          value: /etc/pki/tls/custom-certs/ca-bundle.crt
-        - name: REQUESTS_CA_BUNDLE
-          value: /etc/pki/tls/custom-certs/ca-bundle.crt
+          value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-minimal-notebook:2025.2
         - name: SSL_CERT_FILE
           value: /etc/pki/tls/custom-certs/ca-bundle.crt
         - name: PIPELINES_SSL_SA_CERTS
           value: /etc/pki/tls/custom-certs/ca-bundle.crt
         - name: GIT_SSL_CAINFO
           value: /etc/pki/tls/custom-certs/ca-bundle.crt
-        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/pytorch:2025.1
+        - name: PIP_CERT
+          value: /etc/pki/tls/custom-certs/ca-bundle.crt
+        - name: REQUESTS_CA_BUNDLE
+          value: /etc/pki/tls/custom-certs/ca-bundle.crt
+        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-minimal-notebook:2025.2
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
@@ -77,11 +76,9 @@ spec:
           limits:
             cpu: "2"
             memory: 4Gi
-            # nvidia.com/gpu: "1"
           requests:
             cpu: "2"
             memory: 4Gi
-            # nvidia.com/gpu: "1"
         volumeMounts:
         - mountPath: /dev/shm
           name: shm
@@ -109,13 +106,13 @@ spec:
         - --client-secret-file=/etc/oauth/client/secret
         - --scope=user:info user:check-access
         - --openshift-sar={"verb":"get","resource":"notebooks","resourceAPIGroup":"kubeflow.org","resourceName":"wb-cpu-wo-storage","namespace":"$(NAMESPACE)"}
-        # - --logout-url=https://rhods-dashboard-redhat-ods-applications.apps.cluster-mh5bv.mh5bv.sandbox5379.opentlc.com/projects/demo-notebooks?notebookLogout=wb-cpu-wo-storage
+        # - --logout-url=https://rhods-dashboard-redhat-ods-applications.apps.cluster-dc7lt.dc7lt.sandbox2796.opentlc.com/projects/demo-notebooks?notebookLogout=wb-cpu-wo-storage
         env:
         - name: NAMESPACE
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: registry.redhat.io/openshift4/ose-oauth-proxy@sha256:4f8d66597feeb32bb18699326029f9a71a5aca4a57679d636b876377c2e95695
+        image: registry.redhat.io/openshift4/ose-oauth-proxy-rhel9@sha256:c174c11374a52ddb7ecfa400bbd9fe0c0f46129bd27458991bec69237229ac7d
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
@@ -157,13 +154,7 @@ spec:
         - mountPath: /etc/tls/private
           name: tls-certificates
       enableServiceLinks: false
-      # nodeSelector:
-      #   nvidia.com/gpu.sharing-strategy: none
       serviceAccountName: wb-cpu-wo-storage
-      # tolerations:
-      # - effect: NoSchedule
-      #   key: nvidia.com/gpu
-      #   operator: Exists
       volumes:
       - emptyDir:
           medium: Memory

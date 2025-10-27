@@ -10,7 +10,7 @@ metadata:
     # opendatahub.io/hardware-profile-name: nvidia-100-percent
     opendatahub.io/hardware-profile-namespace: ""
     opendatahub.io/image-display-name: PyTorch
-    opendatahub.io/username: admin
+    opendatahub.io/username: automation
     opendatahub.io/workbench-image-namespace: ""
     openshift.io/description: ""
     openshift.io/display-name: wb-gpu-wo-storage
