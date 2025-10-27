@@ -26,14 +26,13 @@ spec:
     spec:
       containers:
       - env:
-        # - name: NOTEBOOK_ARGS
-        #   value: |-
-        #     --ServerApp.port=8888
-        #                       --ServerApp.token=''
-        #                       --ServerApp.password=''
-        #                       --ServerApp.base_url=/notebook/demo-notebooks/wb-gpu-wo-storage
-        #                       --ServerApp.quit_button=False
-        #                       --ServerApp.tornado_settings={"user":"admin","hub_host":"https://rhods-dashboard-redhat-ods-applications.apps.cluster-mh5bv.mh5bv.sandbox5379.opentlc.com","hub_prefix":"/projects/demo-notebooks"}
+        - name: NOTEBOOK_ARGS
+          value: |-
+            --ServerApp.port=8888
+                              --ServerApp.token=''
+                              --ServerApp.password=''
+                              --ServerApp.base_url=/notebook/demo-notebooks/wb-gpu-wo-storage
+                              --ServerApp.quit_button=False
         - name: JUPYTER_IMAGE
           value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-minimal-notebook:2025.2
         - name: PIP_CERT
