@@ -3,11 +3,11 @@ kind: Notebook
 metadata:
   annotations:
     notebooks.opendatahub.io/inject-oauth: "true"
-    notebooks.opendatahub.io/last-image-selection: s2i-minimal-notebook:2025.2
-    notebooks.opendatahub.io/last-image-version-git-commit-selection: d3137ca
+    notebooks.opendatahub.io/last-image-selection: pytorch:2025.2
+    notebooks.opendatahub.io/last-image-version-git-commit-selection: 8e73cac
     notebooks.opendatahub.io/last-size-selection: ""
     opendatahub.io/accelerator-name: ""
-    # opendatahub.io/hardware-profile-name: nvidia-100-percent
+    # opendatahub.io/hardware-profile-name: nvidia-gpu
     opendatahub.io/hardware-profile-namespace: ""
     opendatahub.io/image-display-name: PyTorch
     opendatahub.io/username: automation
@@ -18,7 +18,7 @@ metadata:
     app: wb-gpu-wo-storage
     opendatahub.io/dashboard: "true"
     opendatahub.io/odh-managed: "true"
-    opendatahub.io/user: "automation"
+    opendatahub.io/user: automation
   name: wb-gpu-wo-storage
   namespace: demo-notebooks
 spec:
@@ -34,7 +34,7 @@ spec:
                               --ServerApp.base_url=/notebook/demo-notebooks/wb-gpu-wo-storage
                               --ServerApp.quit_button=False
         - name: JUPYTER_IMAGE
-          value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-minimal-notebook:2025.2
+          value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/pytorch:2025.2
         - name: PIP_CERT
           value: /etc/pki/tls/custom-certs/ca-bundle.crt
         - name: REQUESTS_CA_BUNDLE
@@ -45,7 +45,7 @@ spec:
           value: /etc/pki/tls/custom-certs/ca-bundle.crt
         - name: GIT_SSL_CAINFO
           value: /etc/pki/tls/custom-certs/ca-bundle.crt
-        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/pytorch:2025.1
+        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/pytorch:2025.2
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
@@ -108,13 +108,12 @@ spec:
         - --client-secret-file=/etc/oauth/client/secret
         - --scope=user:info user:check-access
         - --openshift-sar={"verb":"get","resource":"notebooks","resourceAPIGroup":"kubeflow.org","resourceName":"wb-gpu-wo-storage","namespace":"$(NAMESPACE)"}
-        # - --logout-url=https://rhods-dashboard-redhat-ods-applications.apps.cluster-mh5bv.mh5bv.sandbox5379.opentlc.com/projects/demo-notebooks?notebookLogout=wb-gpu-wo-storage
         env:
         - name: NAMESPACE
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: registry.redhat.io/openshift4/ose-oauth-proxy@sha256:4f8d66597feeb32bb18699326029f9a71a5aca4a57679d636b876377c2e95695
+        image: registry.redhat.io/openshift4/ose-oauth-proxy-rhel9@sha256:c174c11374a52ddb7ecfa400bbd9fe0c0f46129bd27458991bec69237229ac7d
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3

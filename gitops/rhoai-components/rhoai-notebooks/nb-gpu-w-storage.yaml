@@ -3,13 +3,13 @@ kind: Notebook
 metadata:
   annotations:
     notebooks.opendatahub.io/inject-oauth: "true"
-    notebooks.opendatahub.io/last-image-selection: s2i-minimal-notebook:2025.2
+    notebooks.opendatahub.io/last-image-selection: minimal-gpu:2025.2
     notebooks.opendatahub.io/last-image-version-git-commit-selection: d3137ca
     notebooks.opendatahub.io/last-size-selection: ""
     opendatahub.io/accelerator-name: ""
-    # opendatahub.io/hardware-profile-name: nvidia-gpu
-    opendatahub.io/hardware-profile-namespace: ""
-    opendatahub.io/image-display-name: PyTorch
+    opendatahub.io/hardware-profile-name: ""
+    opendatahub.io/image-display-name: Jupyter | Minimal | CUDA | Python 3.12
+    opendatahub.io/legacy-hardware-profile-name: ""
     opendatahub.io/username: automation
     opendatahub.io/workbench-image-namespace: ""
     openshift.io/description: ""
@@ -34,7 +34,7 @@ spec:
                               --ServerApp.base_url=/notebook/demo-notebooks/wb-gpu-w-storage
                               --ServerApp.quit_button=False
         - name: JUPYTER_IMAGE
-          value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-minimal-notebook:2025.2
+          value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/minimal-gpu:2025.2
         - name: PIP_CERT
           value: /etc/pki/tls/custom-certs/ca-bundle.crt
         - name: REQUESTS_CA_BUNDLE
@@ -45,7 +45,7 @@ spec:
           value: /etc/pki/tls/custom-certs/ca-bundle.crt
         - name: GIT_SSL_CAINFO
           value: /etc/pki/tls/custom-certs/ca-bundle.crt
-        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-minimal-notebook:2025.2
+        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/minimal-gpu:2025.2
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
