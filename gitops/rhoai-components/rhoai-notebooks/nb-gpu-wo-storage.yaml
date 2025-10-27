@@ -3,8 +3,8 @@ kind: Notebook
 metadata:
   annotations:
     notebooks.opendatahub.io/inject-oauth: "true"
-    notebooks.opendatahub.io/last-image-selection: pytorch:2025.1
-    notebooks.opendatahub.io/last-image-version-git-commit-selection: 1d7de4c
+    notebooks.opendatahub.io/last-image-selection: s2i-minimal-notebook:2025.2
+    notebooks.opendatahub.io/last-image-version-git-commit-selection: d3137ca
     notebooks.opendatahub.io/last-size-selection: ""
     opendatahub.io/accelerator-name: ""
     # opendatahub.io/hardware-profile-name: nvidia-100-percent
@@ -35,7 +35,7 @@ spec:
         #                       --ServerApp.quit_button=False
         #                       --ServerApp.tornado_settings={"user":"admin","hub_host":"https://rhods-dashboard-redhat-ods-applications.apps.cluster-mh5bv.mh5bv.sandbox5379.opentlc.com","hub_prefix":"/projects/demo-notebooks"}
         - name: JUPYTER_IMAGE
-          value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/pytorch:2025.1
+          value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-minimal-notebook:2025.2
         - name: PIP_CERT
           value: /etc/pki/tls/custom-certs/ca-bundle.crt
         - name: REQUESTS_CA_BUNDLE
