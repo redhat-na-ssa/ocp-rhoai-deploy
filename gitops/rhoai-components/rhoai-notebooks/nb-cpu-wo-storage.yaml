@@ -5,12 +5,12 @@ metadata:
     notebooks.opendatahub.io/inject-oauth: "true"
     notebooks.opendatahub.io/last-image-selection: s2i-minimal-notebook:2025.2
     notebooks.opendatahub.io/last-image-version-git-commit-selection: d3137ca
-    notebooks.opendatahub.io/last-size-selection: ""
+    notebooks.opendatahub.io/last-size-selection: "Small"
     # notebooks.opendatahub.io/oauth-logout-url: https://rhods-dashboard-redhat-ods-applications.apps.cluster-dc7lt.dc7lt.sandbox2796.opentlc.com/projects/demo-notebooks?notebookLogout=wb-cpu-wo-storage
     opendatahub.io/accelerator-name: ""
     opendatahub.io/accelerator-profile-namespace: ""
-    # opendatahub.io/hardware-profile-name: small-notebooks-1bmle
-    opendatahub.io/hardware-profile-namespace: redhat-ods-applications
+    opendatahub.io/hardware-profile-name: small-notebooks
+    opendatahub.io/hardware-profile-namespace: demo-notebooks
     opendatahub.io/image-display-name: Jupyter | Minimal | CPU | Python 3.12
     opendatahub.io/legacy-hardware-profile-name: ""
     # opendatahub.io/username: kube:admin
