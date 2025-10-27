@@ -9,7 +9,7 @@ metadata:
     # notebooks.opendatahub.io/oauth-logout-url: https://rhods-dashboard-redhat-ods-applications.apps.cluster-dc7lt.dc7lt.sandbox2796.opentlc.com/projects/demo-notebooks?notebookLogout=wb-cpu-wo-storage
     opendatahub.io/accelerator-name: ""
     opendatahub.io/accelerator-profile-namespace: ""
-    opendatahub.io/hardware-profile-name: small-notebooks
+    # opendatahub.io/hardware-profile-name: small-notebooks
     opendatahub.io/hardware-profile-namespace: redhat-ods-applications
     opendatahub.io/image-display-name: Jupyter | Minimal | CPU | Python 3.12
     opendatahub.io/legacy-hardware-profile-name: ""
