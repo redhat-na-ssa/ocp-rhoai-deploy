@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
   - namespace.yaml
-  - hw-profile-small.yaml
+  - hw-profile-demo.yaml
 
   - nb-cpu-pvc.yaml
   - nb-cpu-wo-storage.yaml
