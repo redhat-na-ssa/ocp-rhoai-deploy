@@ -64,3 +64,7 @@ oc label nodes \
   <node-name> \
   nvidia.com/mig.config=all-1g.10gb --overwrite
 ```
+
+## Additional Info
+
+- [Demo - RHOAI Distributed Inference (aka llm-d)](https://github.com/redhat-na-ssa/demo-ocp-llm-d)
