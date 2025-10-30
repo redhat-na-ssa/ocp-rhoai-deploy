@@ -1,0 +1,61 @@
+apiVersion: dscinitialization.opendatahub.io/v1
+kind: DSCInitialization
+metadata:
+  name: default-dsci
+spec:
+  applicationsNamespace: redhat-ods-applications
+  monitoring:
+    managementState: Managed
+    namespace: redhat-ods-monitoring
+  serviceMesh:
+    # The following needed to be present to go from
+    # Managed to Removed
+    controlPlane:
+      metricsCollection: Istio
+      name: data-science-smcp
+      namespace: istio-system
+    managementState: Removed
+  trustedCABundle:
+    customCABundle: ''
+    managementState: Managed
+status:
+  conditions:
+    - lastTransitionTime: '2025-09-24T16:29:36Z'
+      message: Reconcile completed successfully
+      reason: ReconcileCompleted
+      status: 'True'
+      type: ReconcileComplete
+    - lastTransitionTime: '2025-09-24T16:29:36Z'
+      message: Reconcile completed successfully
+      reason: ReconcileCompleted
+      status: 'True'
+      type: Available
+    - lastTransitionTime: '2025-09-24T16:29:36Z'
+      message: Reconcile completed successfully
+      reason: ReconcileCompleted
+      status: 'False'
+      type: Progressing
+    - lastTransitionTime: '2025-09-24T16:29:36Z'
+      message: Reconcile completed successfully
+      reason: ReconcileCompleted
+      status: 'False'
+      type: Degraded
+    - lastTransitionTime: '2025-09-24T16:29:36Z'
+      message: Reconcile completed successfully
+      reason: ReconcileCompleted
+      status: 'True'
+      type: Upgradeable
+    - lastTransitionTime: '2025-10-30T14:15:30Z'
+      message: ServiceMesh is set to Removed
+      reason: Removed
+      status: 'False'
+      type: CapabilityServiceMesh
+    - lastTransitionTime: '2025-10-30T14:15:30Z'
+      message: 'ServiceMesh is set to Removed, ServiceMesh Authorization is therefore also Removed'
+      reason: Removed
+      status: 'False'
+      type: CapabilityServiceMeshAuthorization
+  phase: Ready
+  release:
+    name: OpenShift AI Self-Managed
+    version: 2.25.0
