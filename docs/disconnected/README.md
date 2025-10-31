@@ -9,6 +9,7 @@ Red Hat Demo System
 ## Greased Path
 
 [disco-01-jump.sh](disco-01-jump.sh)
+[disco-02-high.sh](disco-02-high.sh)
 
 ```sh
 # run on jump host
